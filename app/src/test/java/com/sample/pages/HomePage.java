@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 import io.appium.java_client.AppiumBy;
 
 public class HomePage extends Driver {
@@ -21,6 +23,12 @@ public class HomePage extends Driver {
     @FindBy(id = "title")
     public WebElement title;
 
+    @FindBy(xpath = "//a[text()='Music']")
+    public WebElement MusicTab;
+
+
+    List<WebElement> listItems = driver.findElements(By.xpath("//*[@class='close-popup']"));
+
 
     public void ScrollTo(String text)
     {
@@ -32,5 +40,27 @@ public class HomePage extends Driver {
     public String GetTitletext()
     {
         return title.getText();
+    }
+
+    public void ClosePopUps()
+    {
+        Boolean popUps = listItems.size()>0;
+        if(popUps)
+        {
+            for(WebElement li:listItems)
+            {
+                li.click();
+            }
+        }
+    }
+
+    public void NavigateMusicTab()
+    {
+        MusicTab.click();
+    }
+
+    public String GetMusicTitle()
+    {
+        return MusicTab.getText();
     }
 }

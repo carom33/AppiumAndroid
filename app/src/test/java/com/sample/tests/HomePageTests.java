@@ -18,4 +18,16 @@ public class HomePageTests {
         String titleResult = homePage.GetTitletext();
         Assert.assertEquals("Clock", titleResult);
     }
+
+    @Test
+    public void PopUpsTest()
+    {
+        LoginPage loginPage = new LoginPage();
+        HomePage homePage = new HomePage();
+        loginPage.LoginToApp("test@gmail.com", "Pass123");
+        homePage.ClosePopUps();
+        homePage.NavigateMusicTab();
+        homePage.ClosePopUps();
+        Assert.assertEquals("Amazon Music", homePage.GetMusicTitle());
+    }
 }
