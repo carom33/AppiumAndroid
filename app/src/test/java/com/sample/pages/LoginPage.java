@@ -10,7 +10,7 @@ public class LoginPage extends Driver {
 
     public LoginPage() {
         super();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(this.driver, this);
     }
 
 
